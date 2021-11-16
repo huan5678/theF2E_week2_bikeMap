@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+const windowWidth = window.innerWidth;
 
-const mapSet = { height: "100vh", width: "100vw" };
+const mapSet = { height: "100vh", width: `${windowWidth}px` };
 const Map = ({ markerPosition })=> {
   const mapRef = useRef(null);
   useEffect(() => {
