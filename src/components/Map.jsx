@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-const windowWidth = window.innerWidth;
 
-const mapSet = { height: "100vh", width: `${windowWidth}px` };
+
+
+
+const mapSet = () => {
+  const windowHeight = window.innerHeight;
+  return { height: `${windowHeight}px`, width: "100%" };
+};
+
+
+
 const Map = ({ markerPosition })=> {
   const mapRef = useRef(null);
   useEffect(() => {
@@ -14,15 +22,19 @@ const Map = ({ markerPosition })=> {
         L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
       ],
     });
+    mapSet();
   }, []);
 
   const markerRef = useRef(null);
+
   useEffect(() => {
+
     if (markerRef.current) {
       markerRef.current.setLatLng(markerPosition);
     } else {
       markerRef.current = L.marker(markerPosition).addTo(mapRef.current);
     }
+
   }, [markerPosition]);
 
   const greenIcon = new L.Icon({
@@ -49,6 +61,6 @@ const Map = ({ markerPosition })=> {
   //   radius: 10,
   // }).addTo(mapRef.current);
 
-  return <div id="map" style={mapSet} />;
+  return <div id="map" style={ mapSet() } className="z-0" />;
 }
 export default Map;

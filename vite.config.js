@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
+import svgr from "vite-plugin-svgr";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh()],
+  plugins: [reactRefresh(), svgr()],
   resolve: {
     alias: {
       "~": path.resolve(__dirname, "./"), // 根路徑
