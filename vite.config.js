@@ -12,4 +12,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"), // src 路徑
     },
   },
+  define: {
+    "process.env.NODE_ENV": {},
+  },
 });

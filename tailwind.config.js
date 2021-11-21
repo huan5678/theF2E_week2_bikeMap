@@ -26,7 +26,9 @@ module.exports = {
       },
     },
     variants: {
-      extend: {},
+      extend: {
+        opacity: ["group-focus"],
+      },
     },
     plugins: [
       require("@tailwindcss/typography"),
